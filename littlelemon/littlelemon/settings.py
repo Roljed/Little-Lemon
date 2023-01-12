@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
+    "rest_framework.authtoken",
+    "djoser",
     "reservation",
     "restaurant",
 ]
@@ -77,15 +79,13 @@ WSGI_APPLICATION = "littlelemon.wsgi.application"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'littlelemon',
-        'USER': 'root',
-        'HOST': 'localhost',
-        'PORT': '3306',
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
-        }
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "littlelemon",
+        "USER": "root",
+        "HOST": "localhost",
+        "PORT": "3306",
+        "OPTIONS": {"init_command": "SET sql_mode='STRICT_TRANS_TABLES'"},
     }
 }
 
@@ -108,6 +108,19 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+REST_FRAMEWORK = {
+    "DEAULT_RENDERER_CLASS": [
+        "rest_framework.renderers.JSONRenderer",
+        "rest_framework.renderers.BrowsableAPIRenderer",
+        "rest_framework.renderers.XMLRenderer",
+    ],
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework.authentication.TokenAuthentication",
+        "rest_framework.authentication.SessionAuthentication",
+    ),
+}
+
+DJOSER = {"USER_ID_FIELD": "username"}
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
