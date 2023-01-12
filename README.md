@@ -1,2 +1,9 @@
-# Little-Lemon
-Little Lemon restaurant
+# Little Lemon Restaurant
+
+API paths:
+
+```HTTP
+/restaurant/menu/
+restaurant/booking/
+/auth/users/
+```
