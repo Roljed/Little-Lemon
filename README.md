@@ -1,6 +1,4 @@
 # Little Lemon Restaurant
-Portfolio project.
-
 
 API paths:
 

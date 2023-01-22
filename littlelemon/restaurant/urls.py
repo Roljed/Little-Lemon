@@ -8,9 +8,12 @@ router = DefaultRouter()
 router.register(r"tables", views.BookingViewSet)
 
 urlpatterns = [
-    path("", views.index, name="index"),
-    path("menu/", views.MenuItemsView.as_view()),
-    path("menu/<int:pk>", views.SingleMenuItemView.as_view()),
-    path("booking/", include(router.urls)),
+    path("", views.HomePageView.as_view(), name="home"),
+    path("about/", views.AboutPageView.as_view(), name="about"),
+    path("menu/", views.MenuItemsView.as_view(), name="menu"),
+    path("menu/<int:pk>", views.SingleMenuItemView.as_view(), name="menu-item"),
+    path("bookings/", include(router.urls), name="bookings"),
+    path("book", views.book, name="book"),
+    path("reservations/", views.ReservationsView.as_view(), name="reservations"),
     path("api-token-auth/", obtain_auth_token),
 ]
